@@ -1,0 +1,22 @@
+Reverse an integer. Suppose we input an integer 123456789, then output is 987654321.
+
+This is a question I saw online, only use basic math to solve the problem. The code for this question is not challenging at all, but the thinking
+is the key to solve it. The beauty of the problem is to use simple math to solve it.
+We update the integer by deviding 10, and record each remainder before the deviding. 
+
+######### Solution #########
+
+def reverse_integer(number):
+    if not number:
+        return
+    result=[]  # result is used to store each digit in number in original order
+    while number>=10:
+        result.insert(0,number % 10) # use insert(0,x) function to keep the original order
+        number =  number / 10 # update number
+    result.insert(0,number)  # do not forget to store the first last digit in number
+    ans=0
+    for i in range(0,len(result)):
+        ans = ans + result[i] * (10 ** i)  
+    return ans
+    
+print reverse_integer(123456789)
